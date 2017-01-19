@@ -1,0 +1,11 @@
+** Express**
+
+
+A framework to help us write servers in Node.
+
+If its a built-in Node module or something you downloaded with NPM you do not need ./ in the required.
+
+The order of the get requests will have an effect of the functionality.
+
+  "Middleware"
+    -
