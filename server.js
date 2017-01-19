@@ -20,21 +20,21 @@ app.get('/songs', function(req, res){
 app.post('/songs', function(req,res){
   var duplicate = false;
   songs.forEach(function(song){
-    if(req.body.title == song.title && req.body.artist == song.artist){
-      duplicate = true;
+    if(req.body.title == song.title && req.body.artist == song.artist && req.body.album == song.album){
+      duplicate = true; //this conditional checks for duplicate songs
     }else if (req.body.title == '' || req.body.artist == '' || req.body.album == ''){
-      duplicate = true;
+      duplicate = true; //this conditional checks for empty fields in the form
     }else{
-      return duplicate;
+      return duplicate; //this is for a success response
     }
   });
     if(duplicate == true && req.body.title == '' || req.body.artist == '' || req.body.album == ''){
-      res.sendStatus(418);
+      res.sendStatus(418); //this will specify sending out a empty field error message
     }else if(duplicate == true){
-      res.sendStatus(400);
+      res.sendStatus(400); //this specifies sending out a duplicate song error message
     }else{
-      var date = new Date();
-      req.body.dateAdded = date.toLocaleDateString('en-US');
+      var date = new Date(); //creates var holding current date and time
+      req.body.dateAdded = date.toLocaleDateString('en-US'); //formats date to avoid superfluous information
       songs.push(req.body);
       res.sendStatus(200);
     }

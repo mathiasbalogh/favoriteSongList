@@ -28,9 +28,10 @@ function addSong(event){
       success: getSongs,
       statusCode: {
         400:err,
-        418:errEmpty
+        418:errEmpty    //this sets possible error code and ties them to an alert
       }
   });
+  this.reset();
 }
 function getSongs(){
   $.ajax({
@@ -40,9 +41,9 @@ function getSongs(){
   });
 
 }
-function err(){
+function err(){ //used to specify alert message to user
   alert('Oops! It looks like we have that one already! Please try again');
 }
-function errEmpty(){
+function errEmpty(){  //used to specify alert message to user
   alert('Oops! One of the fields was left blank! Please try again');
 }
