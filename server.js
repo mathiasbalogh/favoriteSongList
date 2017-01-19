@@ -34,7 +34,7 @@ app.post('/songs', function(req,res){
       res.sendStatus(400); //this specifies sending out a duplicate song error message
     }else{
       var date = new Date(); //creates var holding current date and time
-      req.body.dateAdded = date.toLocaleDateString('en-US'); //formats date to avoid superfluous information
+      req.body.dateAdded = date.toLocaleDateString('en-US'); //formats date to avoid superfluous information and adds date as a property to the song object
       songs.push(req.body);
       res.sendStatus(200);
     }
